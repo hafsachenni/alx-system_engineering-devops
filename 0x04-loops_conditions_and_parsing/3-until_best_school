@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+#this block of code displays best school * 10 using until
+
+counter=0
+until [ $counter -gt 9 ]
+do
+     echo "Best School"
+     ((counter++))
+done
