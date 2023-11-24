@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 # m gonna stop it using my own skills , i dont need ctrl+c 😎
 
-kill "$(pgrep -f 4-to_infinity_and_beyond)"
+kill "(pgrep -f 4-to_infinity_and_beyond)"
