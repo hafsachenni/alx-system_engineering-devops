@@ -4,8 +4,8 @@
 sudo apt-get -y update
 sudo apt-get -y install nginx
 echo "Hello World!" > /var/www/html/index.nginx-debian.html
-touch /etc/nginx/html/404.html
-echo "Ceci n'est pas une page" > /etc/nginx/html/404.html
+touch /var/www/html/404.html
+echo "Ceci n'est pas une page" > /var/www/html/404.html
 
 #nginx configuration file
 echo "server {
