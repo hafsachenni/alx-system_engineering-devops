@@ -15,4 +15,4 @@ echo "server {
 	return 301 http://youtube.com/;
 }
 }" > /etc/nginx/sites-available/default
-service nginx restart
+sudo service nginx restart
