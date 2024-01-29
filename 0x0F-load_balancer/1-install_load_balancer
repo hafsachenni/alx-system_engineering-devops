@@ -8,8 +8,8 @@ echo "
 frontend myfrontend
 	bind *:80
 	mode http
-	default_backend mybackend
-backend mybackend
+	default_backend myback_end
+backend myback_end
 	server 484057-web-01 54.209.138.167:80
 	server 123-web-02 100.26.226.218:80
 	balance roundrobin
