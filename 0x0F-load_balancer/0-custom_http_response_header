@@ -22,7 +22,7 @@ echo "server {
       internal;
       root /var/www/html;
       index index.html;
-      return 404 Ceci n'est pas une page;
+      return 404 \"Ceci n'est pas une page\";
 }
 }" > /etc/nginx/sites-available/default
 sudo service nginx restart
