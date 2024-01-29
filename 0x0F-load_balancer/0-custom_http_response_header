@@ -11,7 +11,7 @@ echo "Ceci n'est pas une page" > /var/www/html/404.html
 echo "server {
     listen 80;
     listen [::]:80 default_server;
-    add_header X-Served-By $HOSTNAME;
+    add_header X-Served-By "$HOSTNAME";
     root    /var/www/html;
     index   index.nginx-debian.html;
     location /redirect_me {
@@ -19,8 +19,10 @@ echo "server {
 }
     error_page 404 /404.html;
     location /404.html {
-      root /var/www/html;
       internal;
+      root /var/www/html;
+      index index.html;
+      return 404 Ceci n'est pas une page;
 }
 }" > /etc/nginx/sites-available/default
 sudo service nginx restart
