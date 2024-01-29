@@ -10,8 +10,8 @@ frontend myfront_end
 	mode http
 	default_backend myback_end
 backend myback_end
-	server 484057-web-01 54.209.138.167:80
-	server 123-web-02 100.26.226.218:80
+	server 484057-web-01 54.209.138.167:80 check
+	server 123-web-02 100.26.226.218:80 check
 	balance roundrobin
 	mode http
 " > /etc/haproxy/haproxy.cfg
