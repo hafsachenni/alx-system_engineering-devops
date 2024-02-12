@@ -1,4 +1,6 @@
-sudo apt install ufw
+#!/bin/bash
+
+sudo apt -y install ufw
 sudo ufw disable
 sudo ufw status
 sudo ufw default deny incoming
