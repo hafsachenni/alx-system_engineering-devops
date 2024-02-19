@@ -9,18 +9,16 @@ if __name__ == "__main__":
     user = "https://jsonplaceholder.typicode.com/users/"
     todos = "https://jsonplaceholder.typicode.com/todos"
     users = requests.get(user).json()
-
-    """opening a file in write mode"""
-    """info about user is in users"""
-    """info about a users todolist in in todos"""
+    # opening a file in write mode
+    # info about user is in users
+    # info about a users todolist in in todos
     with open("todo_all_employees.json", 'w') as file:
         json.dump({
             user.get("id"): [{
                 "username": user.get("username"),
                 "task": todo.get("title"),
                 "completed": todo.get("completed"),
-            } for user in users for todo in requests.get(
-                todos,
-                params={"userId": user.get("id")}
-            ).json()]
-        }, file)
+            } for todo in requests.get(todos,
+                                       params={
+                                           "userId": user.get("id")}).json()]
+            for user in users}, file)
