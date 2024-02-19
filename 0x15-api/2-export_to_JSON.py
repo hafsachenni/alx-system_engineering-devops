@@ -14,12 +14,10 @@ if __name__ == "__main__":
     id = sys.argv[1]
     name = response_user.get("username")
     json_file = "{}.json".format(id)
-    task = response_user.get("title")
-    done = response_user.get("completed")
 
     with open(json_file, "w") as file:
         json.dump({id: [{
-            "task": task,
-            "completed": done,
+            "task": task.get("title"),
+            "completed": task.get("completed"),
             "username": name
         } for task in response_todo]}, file)
