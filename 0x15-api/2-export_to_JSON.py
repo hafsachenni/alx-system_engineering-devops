@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""returning info about someones todolist usinf rest api"""
+"""fetching data in json format"""
 import json
 import requests
 import sys
