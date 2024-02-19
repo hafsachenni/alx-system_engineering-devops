@@ -19,14 +19,6 @@ if __name__ == "__main__":
     with open(csv_file, mode='w') as file:
         csv_writer = csv.writer(file, quoting=csv.QUOTE_ALL)
 
-        """writing HEADERS, indicating column names"""
-        csv_writer.writerow([
-            "USER_ID",
-            "USERNAME",
-            "TASK_COMPLETED_STATUS",
-            "TASK_TITLE"
-        ])
-
         """writing DATA for each task"""
         for task in response_todo:
             task_completed_status = (
