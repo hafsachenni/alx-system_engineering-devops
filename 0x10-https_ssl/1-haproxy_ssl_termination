@@ -33,17 +33,17 @@ defaults
         errorfile 503 /etc/haproxy/errors/503.http
         errorfile 504 /etc/haproxy/errors/504.http
 
-frontend myfront_https
-        bind *:443 ssl crt /etc/letsencrypt/live/www.hafsachenni.tech/www.hafsachenni.tech.pem
+frontend myfront-end1
+        bind *:443 ssl crt /etc/letsencrypt/live/www.hafsachenni.tech/www.hafsa.pem
         mode http
         http-request add-header X-Forwarded-Proto https
         default_backend myback-end
-frontend myfront-end
+frontend myfrontend2
         bind *:80
         mode http
         redirect scheme https code 301 if !{ ssl_fc }
 backend myback-end
-        server 484057-web-01 54.209.138.167:80 check
-        server 123-web-02 100.26.226.218:80 check
+        server nginx1-web-01 100.26.171.37:80 check
+        server nginx2-web-02 54.89.108.245:80 check
         balance roundrobin
         mode http
