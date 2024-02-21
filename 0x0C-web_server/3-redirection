@@ -1,18 +1,16 @@
 #!/usr/bin/env bash
-# script to configure inginx automatically
+# Redirection
 
-sudo apt-get -y update
-sudo apt-get -y install nginx
-echo "Hello World!" > /var/www/html/index.nginx-debian.html
+sudo apt-get update
+sudo apt-get install -y nginx
 
-#nginx configuration file
-echo "server {
-    listen 80;
-    listen [::]:80 default_server;
-    root    /var/www/html;
-    index   index.nginx-debian.html;
-    location /redirect_me {
-	return 301 http://youtube.com/;
-    }
-}" > /etc/nginx/sites-available/default
-sudo service nginx restart
+echo "Hello World!" > /var/www/html/index.html
+
+
+ufw allow 'Nginx HTTP'
+
+# Add redirection
+new_site="https://youtube.com"
+sed -i "/listen 80 default_server/a rewrite ^/redirect_me $new_site permanent;" /etc/nginx/sites-available/default
+
+service nginx restart

@@ -1,25 +1,24 @@
 #!/usr/bin/env bash
-#custom 404 page that contains the string Ceci n'est pas une page
+# handling 404 redirction
 
-sudo apt-get -y update
-sudo apt-get -y install nginx
-echo "Hello World!" > /var/www/html/index.nginx-debian.html
-touch /var/www/html/404.html
-echo "Ceci n'est pas une page" > /var/www/html/404.html
+sudo apt-get update
+sudo apt-get install -y nginx
 
-#nginx configuration file
-echo "server {
-    listen 80;
-    listen [::]:80 default_server;
-    root    /var/www/html;
-    index   index.nginx-debian.html;
-    location /redirect_me {
-	return 301 http://youtube.com/;
-}
-    error_page 404 /404.html;
-    location /404.html {
-      root /var/www/html;
-      internal;
-}
-}" > /etc/nginx/sites-available/default
+# Create default page
+echo "Hello World!" > /var/www/html/index.html
+
+# Firewall Configurate server
+sudo ufw allow 'Nginx HTTP'
+
+f_config="/etc/nginx/sites-available/default"
+# Add redirection
+new_site="https://github.com/SosMrRaziel"
+sed -i "/listen 80 default_server/a rewrite ^/redirect_me $new_site permanent;" $f_config
+
+# Add 404 redirection
+echo "Ceci n'est pas une page" > /usr/share/nginx/html/my_404.html
+new_404="my_404.html"
+l_new_404="/my_404.html {root /usr/share/nginx/html;\n internal;}"
+sed -i "/listen 80 default_server/a error_page 404 /$new_404; location = $l_new_404" $f_config
+
 service nginx restart
