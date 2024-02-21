@@ -12,7 +12,7 @@ sudo ufw allow 'Nginx HTTP'
 
 f_config="/etc/nginx/sites-available/default"
 # Add redirection
-new_site="https://github.com/SosMrRaziel"
+new_site="https://youtube.com"
 sed -i "/listen 80 default_server/a rewrite ^/redirect_me $new_site permanent;" $f_config
 
 # Add 404 redirection
