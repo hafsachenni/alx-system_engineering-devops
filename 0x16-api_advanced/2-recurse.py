@@ -2,7 +2,6 @@
 """prints the titles of the first 10 hot posts listed for a given subreddit"""
 
 import requests
-import time
 
 
 def recurse(subreddit, hot_list=[], after=None):
@@ -20,7 +19,6 @@ def recurse(subreddit, hot_list=[], after=None):
             """checking if we have paginated data that we have to go through"""
             after = data['data']['after']
             if after:
-                time.sleep(2)
                 return recurse(subreddit, hot_list, after)
             else:
                 """return the final hot list if there is no pages left"""
@@ -28,11 +26,5 @@ def recurse(subreddit, hot_list=[], after=None):
         else:
             """return none if children was not found in response"""
             return None
-    elif response.status_code == 429:
-        """none, if request was unsuccessful"""
-        print(f"Rate-limited, waiting and retrying...")
-        time.sleep(30)
-        return recurse(subreddit, hot_list, after)
     else:
-        print(f"Request failed with status code: {response.status_code}")
         return None
