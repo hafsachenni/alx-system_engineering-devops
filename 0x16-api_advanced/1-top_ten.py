@@ -1,7 +1,8 @@
 #!/usr/bin/python3
-"""prints the titles of the first 10 hot posts listed for a given subreddit"""
+"""prints the titles of the first 10 hot posts listed"""
 
 import requests
+
 
 def top_ten(subreddit):
     """function that queries the Reddit API and prints titles of hot posts"""
@@ -11,7 +12,7 @@ def top_ten(subreddit):
     response = requests.get(url)
     if response.status_code == 200:
         data = response.json()
-        
+
         """now lets check if children key is present in the response"""
         if 'children' in data['data']:
             for post in data['data']['children']:
