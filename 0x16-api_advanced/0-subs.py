@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""function that queries the Reddit API and returns the number of subscribers"""
+"""function that queries the Reddit API"""
 
 import requests
 
@@ -9,7 +9,7 @@ def number_of_subscribers(subreddit):
     header = {'User-Agent': 'MyBot/1.0 (by /u/hafsachenni)'}
     """thats the reddit api endpoint for subreddit info"""
     url = 'http://www.reddit.com/r/{}/about.json'.format(subreddit)
-    response = requests.get(url)
+    response = requests.get(url, headers=header)
     """checking if response is successful"""
     if response.status_code == 200:
         data = response.json()
