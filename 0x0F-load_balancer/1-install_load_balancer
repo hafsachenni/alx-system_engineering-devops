@@ -11,11 +11,11 @@ frontend myfront-end
 	mode http
 	default_backend myback-end
 backend myback-end
-	server nginx1-web-01 100.26.171.37:80 check
-	server nginx2-web-02 54.89.108.245:80 check
+	server nginx1-web-01 54.167.198.176:80 check
+	server nginx2-web-02 35.175.102.14:80 check
 	balance roundrobin
 	mode http
-" > /etc/haproxy/haproxy.cfg
+" >> /etc/haproxy/haproxy.cfg
 
-echo "ENABLED=1" > /etc/default/haproxy
+echo "ENABLED=1" >> /etc/default/haproxy
 sudo service haproxy restart
