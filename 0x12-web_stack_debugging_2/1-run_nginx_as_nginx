@@ -8,3 +8,4 @@ sed -i "s/80/8080/g" /etc/nginx/sites-available/default
 #changing permissions to read and write for the owner and read for others
 chmod 644 /etc/nginx/nginx.conf
 pkill apache2
+sudo -u nginx service nginx start
