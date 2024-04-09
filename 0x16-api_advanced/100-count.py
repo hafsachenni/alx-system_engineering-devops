@@ -20,10 +20,11 @@ def count_worrd(subreddit, word_list, after, word_count):
         word_count = Counter()
     url = f"https://www.reddit.com/r/{subreddit}/hot.json"
     params = {"limit": 100, "after": after}
+    hearders = {"User-agent": "Reddit/1.0 (Hafsa)"}
     response = requests.get(
         url,
         params=params,
-        headers={"User-agent": "Reddit/1.0 (Hafsa)"},
+        headers=hearders,
     )
 
     if response.status_code == 200:
