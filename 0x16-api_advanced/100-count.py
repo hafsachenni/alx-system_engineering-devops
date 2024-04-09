@@ -21,7 +21,7 @@ def count_worrd(subreddit, word_list, after, word_count):
     params = {"limit": 100, "after": after}
     response = requests.get(
         url,
-        parameter=params,
+        params=params,
         headers={"User-agent": "Reddit/1.0 (Hafsa)"},
     )
 
