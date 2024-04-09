@@ -14,6 +14,7 @@ def count_words(subreddit, word_list):
         word_count=None,
     )
 
+
 def count_worrd(subreddit, word_list, after, word_count):
     if word_count is None:
         word_count = Counter()
