@@ -1,0 +1,3 @@
+# API ADVANCED
+
+## In this project we learned how to use an API with pagination, how to make recursive API calls...
