@@ -1,4 +1,4 @@
-#fixing nginx to go from 943 failed http request to 0
+#fixing my nginx server to go from 943 failed http request to 0
 
 exec {'replace':
     provider => shell,
@@ -10,3 +10,5 @@ exec {'restart':
     provider => shell,
     command  => 'sudo service nginx restart',
 }
+
+exec
