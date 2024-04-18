@@ -1,4 +1,4 @@
-# trying to login with holberton user and open a file without err msg
+# trying to login with holberton user and open a given file without err msg
 
 exec {'replace-1':
 	provider => shell,
